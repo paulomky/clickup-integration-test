@@ -70,13 +70,6 @@ Este projeto está sob a licença MIT.
 
 ---
 
-## ✍️ Autor
-
-Seu Nome
-[LinkedIn](#) | [GitHub](#)
-
----
-
 ## ⚠️ Observação
 
 Este README é apenas um modelo placeholder para testes.

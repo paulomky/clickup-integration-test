@@ -14,8 +14,6 @@ Use este espaço para descrever o propósito do seu projeto, funcionalidades pri
 ## 🛠️ Tecnologias Utilizadas
 
 * Tecnologia 1
-* Tecnologia 2
-* Tecnologia 3
 
 ---
 
@@ -23,10 +21,7 @@ Use este espaço para descrever o propósito do seu projeto, funcionalidades pri
 
 ```
 /projeto
-│── src/
-│── docs/
 │── README.md
-│── package.json
 ```
 
 ---
@@ -52,8 +47,6 @@ npm start
 ## 📋 Funcionalidades
 
 * [ ] Funcionalidade 1
-* [ ] Funcionalidade 2
-* [ ] Funcionalidade 3
 
 ---
 

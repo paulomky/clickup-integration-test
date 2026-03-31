@@ -1,13 +1,14 @@
 name: ClickUp Comment Sync
 
 on:
+  pull_request:
+    types: [opened]
   issue_comment:
     types: [created, edited]
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request }}
     steps:
       - uses: actions/checkout@v4
 

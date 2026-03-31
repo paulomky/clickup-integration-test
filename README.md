@@ -60,9 +60,3 @@ Sinta-se à vontade para abrir issues e pull requests.
 ## 📄 Licença
 
 Este projeto está sob a licença MIT.
-
----
-
-## ⚠️ Observação
-
-Este README é apenas um modelo placeholder para testes.

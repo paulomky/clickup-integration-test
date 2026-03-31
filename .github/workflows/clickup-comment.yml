@@ -2,9 +2,7 @@ name: ClickUp Comment Sync
 
 on:
   pull_request:
-    types: [opened]
-  issue_comment:
-    types: [created, edited]
+    types: [opened, edited]
 
 jobs:
   sync:
@@ -21,3 +19,4 @@ jobs:
         env:
           CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
           ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}

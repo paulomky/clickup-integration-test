@@ -1,0 +1,22 @@
+name: ClickUp Comment Sync
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue.pull_request }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: log-github-event
+        run: echo '${{ toJSON(github.event) }}'
+
+      - name: log-infos
+        run: |
+          echo clickup secrets $CLICKUP_TOKEN $ASSIGNEE_ID
+        env:
+          CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
+          ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}

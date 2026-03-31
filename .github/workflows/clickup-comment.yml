@@ -17,6 +17,7 @@ jobs:
         run: |
           echo clickup secrets $CLICKUP_TOKEN $ASSIGNEE_ID
         env:
+          CLICKUP_URL: https://api.clickup.com
           CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
           ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}

@@ -47,10 +47,3 @@ npm start
 ## 📋 Funcionalidades
 
 * [ ] Funcionalidade 1
-
----
-
-## 🤝 Contribuição
-
-Contribuições são bem-vindas!
-Sinta-se à vontade para abrir issues e pull requests.

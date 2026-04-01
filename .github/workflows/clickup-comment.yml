@@ -11,6 +11,10 @@ on:
 jobs:
   sync-clickup-comment:
     runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.head.ref != 'development' &&
+      github.event.pull_request.head.ref != 'homologation' &&
+      github.event.pull_request.head.ref != 'main'
     steps:
       - uses: actions/checkout@v4
 
@@ -37,7 +41,7 @@ jobs:
           CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
           ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_BODY: ${{ github.event.pull_request.body }}
           GITHUB_USER: ${{ github.event.pull_request.user.login }}
           PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
           TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
@@ -49,7 +53,7 @@ jobs:
           CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
           ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_BODY: ${{ github.event.pull_request.body }}
           GITHUB_USER: ${{ github.event.pull_request.user.login }}
           PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
           TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}

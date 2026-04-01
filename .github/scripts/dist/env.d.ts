@@ -3,10 +3,11 @@ interface EnvType {
     branchName: string;
     taskId: string;
     clickUpToken: string;
-    assigneeId: string;
+    assigneeId: number;
     commentBody: string;
     githubUser: string;
     pullRequestUrl: string;
+    targetBranch: string;
 }
 export declare const env: EnvType;
 export {};

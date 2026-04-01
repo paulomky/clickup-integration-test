@@ -8,9 +8,10 @@ export const env = {
     branchName: branch,
     taskId: taskId,
     clickUpToken: process.env.CLICKUP_TOKEN,
-    assigneeId: process.env.ASSIGNEE_ID,
+    assigneeId: parseInt(process.env.ASSIGNEE_ID ?? ''),
     commentBody: process.env.COMMENT_BODY,
     githubUser: process.env.GITHUB_USER,
-    pullRequestUrl: process.env.PULL_REQUEST_URL
+    pullRequestUrl: process.env.PULL_REQUEST_URL,
+    targetBranch: process.env.TARGET_BRANCH
 };
 //# sourceMappingURL=env.js.map

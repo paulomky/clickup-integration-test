@@ -1,32 +1,24 @@
 import { getGithubUserInfo } from '../get-github-user-info.js';
 import { env } from '../env.js';
+import { getCommentByAssigneeIdAndPullRequestUrl } from './get-most-recent-comment.js';
+import { createClickUpComment, updateClickUpComment } from '../api/clickup-api.js';
 
 const githubUserInfo = await getGithubUserInfo(env.githubUser);
-const message = `Assignee: ${githubUserInfo.name} (${env.githubUser})
+const message = `Responsável: ${githubUserInfo.name} (${env.githubUser})
 Linked Pull Request: ${env.pullRequestUrl}
+Aplicado no ambiente: ${env.targetBranch}
 
----
+--- Início do comentário ---
 
-${env.commentBody}`;
+${env.commentBody}
 
-console.log(message);
+--- Fim do comentário ---`;
 
-const url = `${env.clickUpUrl}/api/v2/task/${env.taskId}/comment?custom_task_ids=false`
-const options = {
-    method: 'POST',
-    headers: {
-        'accept': 'application/json',
-        'content-type': 'application/json;charset=utf-8',
-        'Authorization': env.clickUpToken
-    },
-    body: JSON.stringify({
-        notify_all: false,
-        assignee: env.assigneeId,
-        comment_text: message
-    })
-};
+const previousComment = await getCommentByAssigneeIdAndPullRequestUrl(env.taskId, env.assigneeId, env.pullRequestUrl);
 
-fetch(url, options)
-    .then(res => res.json())
-    .then(json => console.log(json))
-    .catch(err => console.error(err));
+if (previousComment != null) {
+    const newComment = message + `\n\n\n*Comentário atualizado em ${new Date().toLocaleString('pt-BR', { hour12: false })}*`;
+    await updateClickUpComment(previousComment.id, env.assigneeId, newComment);
+} else {
+    await createClickUpComment(env.taskId, env.assigneeId, message);
+}

@@ -3,6 +3,10 @@ name: ClickUp Comment Sync
 on:
   pull_request:
     types: [opened, edited]
+    branches:
+      - main
+      - development
+      - homologation
 
 jobs:
   sync:
@@ -24,3 +28,4 @@ jobs:
           COMMENT_BODY: ${{ github.event.comment.body }}
           GITHUB_USER: ${{ github.event.pull_request.user.login }}
           PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}

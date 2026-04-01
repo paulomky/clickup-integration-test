@@ -21,3 +21,6 @@ jobs:
           CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
           ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          GITHUB_USER: ${{ github.event.pull_request.user.login }}
+          PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}

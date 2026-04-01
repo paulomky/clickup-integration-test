@@ -1,9 +1,9 @@
-export interface GithubUser {
+export interface GithubUserType {
   login: string;
   name: string;
 }
 
-export async function getGithubUserInfo(githubUser: string): Promise<GithubUser> {
+export async function getGithubUserInfo(githubUser: string): Promise<GithubUserType> {
   const response = await fetch(`https://api.github.com/users/${githubUser}`);
   const data = await response.json() as Record<string, unknown>;
 

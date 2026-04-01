@@ -9,17 +9,41 @@ on:
       - homologation
 
 jobs:
-  sync:
+  sync-clickup-comment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: log-github-event
         run: echo '${{ toJSON(github.event) }}'
 
       - name: log-infos
         run: |
-          echo clickup secrets $CLICKUP_TOKEN $ASSIGNEE_ID
+          echo "CLICKUP_URL: $CLICKUP_URL"
+          echo "CLICKUP_TOKEN: $CLICKUP_TOKEN"
+          echo "ASSIGNEE_ID: $ASSIGNEE_ID"
+          echo "BRANCH_NAME: $BRANCH_NAME"
+          echo "COMMENT_BODY: $COMMENT_BODY"
+          echo "GITHUB_USER: $GITHUB_USER"
+          echo "PULL_REQUEST_URL: $PULL_REQUEST_URL"
+          echo "TARGET_BRANCH: $TARGET_BRANCH"
+        env:
+          CLICKUP_URL: https://api.clickup.com
+          CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}
+          ASSIGNEE_ID: ${{ secrets.ASSIGNEE_ID }}
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          GITHUB_USER: ${{ github.event.pull_request.user.login }}
+          PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+
+      - name: run-create-comment-script
+        run: node .github/scripts/dist/task-comment/create-comment.js
         env:
           CLICKUP_URL: https://api.clickup.com
           CLICKUP_TOKEN: ${{ secrets.CLICKUP_TOKEN }}

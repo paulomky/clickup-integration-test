@@ -1,0 +1,1 @@
+{"version":3,"file":"get-github-user-info.d.ts","sourceRoot":"","sources":["../../../src/get-github-user-info.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,cAAc;IAC7B,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,MAAM,CAAC;CACd;AAED,wBAAsB,iBAAiB,CAAC,UAAU,EAAE,MAAM,GAAG,OAAO,CAAC,cAAc,CAAC,CAQnF"}

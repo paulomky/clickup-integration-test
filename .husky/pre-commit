@@ -1,1 +1,3 @@
 npm run build
+git add .
+git commit -m "chore: build before commit" -n

@@ -24,7 +24,7 @@ jobs:
           node-version: '20'
 
       - name: log-github-event
-        run: echo '${{ toJSON(github.event) }}'
+        run: echo "${{ toJSON(github.event) }}"
 
       - name: log-infos
         run: |

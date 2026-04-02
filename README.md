@@ -46,4 +46,4 @@ npm start
 
 ## 📋 Funcionalidades
 
-* [] Funcionalidade 1
+* [x] Funcionalidade 1
